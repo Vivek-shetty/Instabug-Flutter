@@ -3,7 +3,7 @@ jobs:
    android_tests:
     working_directory: ~/project/example/android
     macos:
-      xcode: "9.4.0"
+      xcode: "12.3.0"
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -70,7 +70,7 @@ jobs:
 
    ios_tests:
     macos:
-      xcode: "10.2.0"
+      xcode: "12.3.0"
     working_directory: ~/project/example/ios
     environment:
       FL_OUTPUT_DIR: output
@@ -113,7 +113,7 @@ jobs:
 
    publish:
     macos:
-      xcode: "10.1.0"
+      xcode: "12.3.0"
     steps:
       - checkout
       - run: git clone https://InstabugCI:$RELEASE_GITHUB_TOKEN@github.com/Instabug/Escape.git
