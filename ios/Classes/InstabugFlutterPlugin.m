@@ -900,6 +900,10 @@ FlutterMethodChannel* channel;
       @"CustomTextPlaceHolderKey.liveWelcomeMessageTitle": kIBGLiveWelcomeMessageTitle,
       @"CustomTextPlaceHolderKey.liveWelcomeMessageContent": kIBGLiveWelcomeMessageContent,
 
+      @"CustomTextPlaceHolderKey.reportBugDescription": kIBGReportBugDescriptionStringName,
+      @"CustomTextPlaceHolderKey.reportFeedbackDescription": kIBGReportFeedbackDescriptionStringName,
+      @"CustomTextPlaceHolderKey.reportQuestionDescription": kIBGReportQuestionDescriptionStringName,
+
       @"ReportType.bug": @(IBGBugReportingReportTypeBug),
       @"ReportType.feedback": @(IBGBugReportingReportTypeFeedback),
       @"ReportType.question": @(IBGBugReportingReportTypeQuestion),
