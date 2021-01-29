@@ -1,5 +1,7 @@
 package com.instabug.instabugflutter;
 
+import android.util.Log;
+
 import com.instabug.bug.BugReporting;
 import com.instabug.bug.invocation.Option;
 import com.instabug.featuresrequest.ActionType;
@@ -78,7 +80,8 @@ final class ArgsRegistry {
     static <T> T getDeserializedValue(String key, Class<T> clazz) {
         if (key != null && ARGS.containsKey(key)) {
             Object constant = ARGS.get(key);
-            if (constant != null && constant.getClass().isAssignableFrom(clazz)) {
+            //if (constant != null && constant.getClass().isAssignableFrom(clazz)) {
+            if (constant != null) {
                 return (T) constant;
             }
         }
@@ -164,6 +167,9 @@ final class ArgsRegistry {
         args.put("CustomTextPlaceHolderKey.reportQuestion", InstabugCustomTextPlaceHolder.Key.REPORT_QUESTION);
         args.put("CustomTextPlaceHolderKey.reportBug", InstabugCustomTextPlaceHolder.Key.REPORT_BUG);
         args.put("CustomTextPlaceHolderKey.reportFeedback", InstabugCustomTextPlaceHolder.Key.REPORT_FEEDBACK);
+        args.put("CustomTextPlaceHolderKey.reportBugDescription", InstabugCustomTextPlaceHolder.Key.REPORT_BUG_DESCRIPTION);
+        args.put("CustomTextPlaceHolderKey.reportQuestionDescription", InstabugCustomTextPlaceHolder.Key.REPORT_QUESTION_DESCRIPTION);
+        args.put("CustomTextPlaceHolderKey.reportFeedbackDescription", InstabugCustomTextPlaceHolder.Key.REPORT_FEEDBACK_DESCRIPTION);
         args.put("CustomTextPlaceHolderKey.emailFieldHint", InstabugCustomTextPlaceHolder.Key.EMAIL_FIELD_HINT);
         args.put("CustomTextPlaceHolderKey.commentFieldHintForBugReport", InstabugCustomTextPlaceHolder.Key.COMMENT_FIELD_HINT_FOR_BUG_REPORT);
         args.put("CustomTextPlaceHolderKey.commentFieldHintForFeedback", InstabugCustomTextPlaceHolder.Key.COMMENT_FIELD_HINT_FOR_FEEDBACK);
@@ -200,18 +206,18 @@ final class ArgsRegistry {
     static void registerInstabugExtendedBugReportModeArgs(Map<String, Object> args) {
         args.put("ExtendedBugReportMode.enabledWithRequiredFields", ExtendedBugReport.State.ENABLED_WITH_REQUIRED_FIELDS);
         args.put("ExtendedBugReportMode.enabledWithOptionalFields", ExtendedBugReport.State.ENABLED_WITH_OPTIONAL_FIELDS);
-        args.put("ExtendedBugReportMode.disabled",ExtendedBugReport.State.DISABLED);
+        args.put("ExtendedBugReportMode.disabled", ExtendedBugReport.State.DISABLED);
     }
 
     static void registerInstabugActionTypesArgs(Map<String, Object> args) {
-        args.put("ActionType.requestNewFeature",ActionType.REQUEST_NEW_FEATURE);
-        args.put("ActionType.addCommentToFeature",ActionType.ADD_COMMENT_TO_FEATURE);
+        args.put("ActionType.requestNewFeature", ActionType.REQUEST_NEW_FEATURE);
+        args.put("ActionType.addCommentToFeature", ActionType.ADD_COMMENT_TO_FEATURE);
     }
 
     static void registerReproStepsModeArgs(Map<String, Object> args) {
         args.put("ReproStepsMode.enabled", State.ENABLED);
         args.put("ReproStepsMode.disabled", State.DISABLED);
-        args.put("ReproStepsMode.enabledWithNoScreenshots",State.ENABLED_WITH_NO_SCREENSHOTS);
+        args.put("ReproStepsMode.enabledWithNoScreenshots", State.ENABLED_WITH_NO_SCREENSHOTS);
     }
 
 }

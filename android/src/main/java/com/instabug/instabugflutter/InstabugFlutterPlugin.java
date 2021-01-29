@@ -303,10 +303,10 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Returns the user attribute associated with a given key.
-     * 
+     *
      * @param key The key for which to return the corresponding value.
      * @return The value associated with aKey, or null if no value is associated
-     *         with aKey.
+     * with aKey.
      */
     public String getUserAttributeForKey(String key) {
         return Instabug.getUserAttribute(key);
@@ -314,9 +314,9 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Returns all user attributes.
-     * 
+     *
      * @return A new HashMap containing all the currently set user attributes, or an
-     *         empty HashMap if no user attributes have been set.
+     * empty HashMap if no user attributes have been set.
      */
     public HashMap<String, String> getUserAttributes() {
         return Instabug.getAllUserAttributes();
@@ -348,15 +348,16 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Overrides any of the strings shown in the SDK with custom ones.
-     * 
+     *
      * @param value            String value to override the default one.
      * @param forStringWithKey Key of string to override.
      */
     public void setValue(String value, String forStringWithKey) {
-        InstabugCustomTextPlaceHolder.Key key = ArgsRegistry.getDeserializedValue(forStringWithKey,
-                InstabugCustomTextPlaceHolder.Key.class);
-        placeHolder.set(key, value);
-        Instabug.setCustomTextPlaceHolders(placeHolder);
+        InstabugCustomTextPlaceHolder.Key key = ArgsRegistry.getDeserializedValue(forStringWithKey, InstabugCustomTextPlaceHolder.Key.class);
+        if (key != null) {
+            placeHolder.set(key, value);
+            Instabug.setCustomTextPlaceHolders(placeHolder);
+        }
     }
 
     /**
@@ -381,7 +382,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
     /**
      * Gets the private method that matches the class, method name and parameter
      * types given and making it accessible. For private use only.
-     * 
+     *
      * @param clazz         the class the method is in
      * @param methodName    the method name
      * @param parameterType list of the parameter types of the method
@@ -491,7 +492,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
     /**
      * Enables and disables manual invocation and prompt options for bug and
      * feedback.
-     * 
+     *
      * @param {boolean} isEnabled
      */
     public void setBugReportingEnabled(final boolean isEnabled) {
@@ -570,13 +571,13 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
      *                   recording attachments.
      */
     public void setEnabledAttachmentTypes(boolean screenshot, boolean extraScreenshot, boolean galleryImage,
-            boolean screenRecording) {
+                                          boolean screenRecording) {
         BugReporting.setAttachmentTypesEnabled(screenshot, extraScreenshot, galleryImage, screenRecording);
     }
 
     /**
      * Sets what type of reports, bug or feedback, should be invoked.
-     * 
+     *
      * @param {array} reportTypes - Array of reportTypes
      */
     public void setReportTypes(final ArrayList<String> reportTypes) {
@@ -620,12 +621,12 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Invoke bug reporting with report type and options.
-     * 
+     *
      * @param {reportType}        type
      * @param {invocationOptions} options
      */
     public void showBugReportingWithReportTypeAndOptions(final String reportType,
-            final List<String> invocationOptions) {
+                                                         final List<String> invocationOptions) {
         int[] options = new int[invocationOptions.size()];
         for (int i = 0; i < invocationOptions.size(); i++) {
             options[i] = ArgsRegistry.getDeserializedValue(invocationOptions.get(i), Integer.class);
@@ -680,7 +681,6 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
      * Sets the runnable that gets executed just after showing any valid survey<br/>
      * WARNING: This runs on your application's main UI thread. Please do not
      * include any blocking operations to avoid ANRs.
-     *
      */
     public void setOnDismissSurveyCallback() {
 
@@ -741,7 +741,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
      *
      * @param surveyToken the attribute key as string
      * @return the desired value of whether the user has responded to the survey or
-     *         not.
+     * not.
      */
     public void hasRespondedToSurveyWithToken(String surveyToken) {
         boolean hasResponded;
@@ -780,7 +780,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Enables and disables everything related to creating new chats.
-     * 
+     *
      * @param {boolean} isEnabled
      */
     public void setChatsEnabled(final boolean isEnabled) {
@@ -798,7 +798,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Enables and disables everything related to receiving replies.
-     * 
+     *
      * @param {boolean} isEnabled
      */
     public void setRepliesEnabled(final boolean isEnabled) {
@@ -900,7 +900,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
 
     /**
      * Enables and disables automatic crash reporting.
-     * 
+     *
      * @param {boolean} isEnabled
      */
     public void setCrashReportingEnabled(final boolean isEnabled) {
@@ -936,9 +936,9 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
     }
 
     /*
-     * 
+     *
      * Reports that the screen has been
-     * 
+     *
      * changed (Repro Steps) the screen sent to this method will be the 'current
      * view' on the dashboard
      *
@@ -962,7 +962,6 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
      * Sets the Repro Steps mode
      *
      * @param reproStepsMode string repro step mode
-     *
      */
     public void setReproStepsMode(String reproStepsMode) {
         try {
@@ -976,7 +975,7 @@ public class InstabugFlutterPlugin implements MethodCallHandler {
      * Sets the threshold value of the shake gesture for android devices. Default
      * for android is an integer value equals 350. you could increase the shaking
      * difficulty level by increasing the `350` value and vice versa
-     * 
+     *
      * @param androidThreshold Threshold for android devices.
      */
     public void setShakingThresholdForAndroid(int androidThreshold) {
